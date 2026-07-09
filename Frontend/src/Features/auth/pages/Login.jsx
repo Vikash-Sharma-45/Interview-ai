@@ -14,8 +14,9 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         await handleLogin({email, password})
-        navigate("/")
-
+        console.log("Navigation")
+        navigate('/')
+       
     }
     if(loading){
             return(<main><h1>Loading...</h1></main>)
