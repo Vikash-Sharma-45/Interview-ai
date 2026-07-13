@@ -1,10 +1,17 @@
 require("dotenv").config()
 const connectToDB = require("./src/config/database")
+const invokeGeminiAi = require("./src/services/ai.service")
+const generateInterviewReport = require("./src/services/ai.service")
+const {resume, selfDescription, jobDescription} = require("./src/services/temp")
 
 const app = require('./src/app');
 
 
-    connectToDB()
+connectToDB()
+
+generateInterviewReport({resume, selfDescription, jobDescription})
+
+// listModels()
 
 app.listen(8000, () => {
 
