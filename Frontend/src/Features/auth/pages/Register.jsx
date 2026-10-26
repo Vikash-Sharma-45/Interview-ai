@@ -8,7 +8,7 @@ const Register = () => {
     const {loading, handleRegister} = useAuth()
 
     const navigate = useNavigate()
-    const [user, setUsername] = useState("")
+    const [username, setUsername] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 

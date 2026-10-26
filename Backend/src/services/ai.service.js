@@ -43,7 +43,7 @@ async function generateInterviewReport({resume, selfDescription, jobDescription}
         model: "gemini-flash-latest",
         contents : prompt,
         config : {
-            responseMimeType : "application/json", 
+            responseMimeType : "application/json",
             responseSchema : zodToJsonSchema(interviewReportSchema)
         }
 

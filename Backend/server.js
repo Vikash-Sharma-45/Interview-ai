@@ -9,7 +9,7 @@ const app = require('./src/app');
 
 connectToDB()
 
-generateInterviewReport({resume, selfDescription, jobDescription})
+// generateInterviewReport({resume, selfDescription, jobDescription})
 
 // listModels()
 
