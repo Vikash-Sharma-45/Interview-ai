@@ -123,7 +123,7 @@ const inerviewReportSchema = new mongoose.Schema({
     behavioralQuestions : [behavioralQuestionSchema],
     skillGap : [skillGapSchema],
     preparationPlan : [preparationPlanSchema]
-}, {
+},{
     timestamps : true
 })
 

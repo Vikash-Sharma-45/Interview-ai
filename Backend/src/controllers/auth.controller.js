@@ -1,8 +1,9 @@
 const userModel  = require("../models/user.model")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
-const cookieParser = require("cookie-parser")
 const tokenBlacklistModel = require("../models/blacklist.model")
+
+const JWT_SECRET = process.env.JWT_SECRET || "dev-secret";
 
 /**
  * - @name registerUserController
@@ -40,11 +41,19 @@ async function registerUserController(req, res) {
 
     const token = jwt.sign(
         {id : user._id, username : user.username},
-        process.env.JWT_SECRET,
+        JWT_SECRET,
         {expiresIn : "1D"}
     )
 
-    res.cookie("token", token)
+    // res.cookie("token", token)
+
+    res.cookie("token", token, {
+        httpOnly: true,
+        secure: false, // Local development over HTTP
+        sameSite: "lax",
+        maxAge: 24 * 60 * 60 * 1000, // 1 day
+    });
+
 
     res.status(201).json({
         message : "User registered successfully",
@@ -85,11 +94,19 @@ async function loginUserController(req, res) {
 
     const token = jwt.sign(
         {id : user._id, username : user.username},
-        process.env.JWT_SECRET,
+        JWT_SECRET,
         {expiresIn : "1D"}
     )
 
-    res.cookie("token", token)
+    // res.cookie("token", token)
+
+    res.cookie("token", token, {
+        httpOnly: true,
+        secure: false, // Local development over HTTP
+        sameSite: "lax",
+        maxAge: 24 * 60 * 60 * 1000, // 1 day
+    });
+
 
     res.status(200).json({
         message : "User loggedin Successfully.",
